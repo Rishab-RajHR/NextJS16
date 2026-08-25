@@ -7,11 +7,16 @@ const nextConfig = {
     // output: "export"
     redirects : async () => {
         return [
-           {
-               source: '/redirection',
-               destination : '/',
-               permanent: false
-           },
+          //  {
+          //      source: '/redirection',
+          //      destination : '/',
+          //      permanent: false
+          //  },
+          {
+             source: '/redirection/:id',
+             destination: '/home',
+             permanent: false
+          }
         ]
     }
 };
