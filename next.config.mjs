@@ -4,7 +4,16 @@ const nextConfig = {
   images : {
       domains : ['images.gstatic.com']
   },
-    output: "export"
+    // output: "export"
+    redirects : async () => {
+        return [
+           {
+               source: '/redirection',
+               destination : '/',
+               permanent: false
+           },
+        ]
+    }
 };
 
 export default nextConfig;
