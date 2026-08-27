@@ -18,8 +18,8 @@ export const DELETE = async (req, { params }) => {
     const { empid } = await  params;
     let employeeId = empid;
     if (employeeId) {
-        return NextResponse.json({result: "Employee Info Deleted Successfully"}, {status: 200})
+        return NextResponse.json({result: "Employee Info Deleted Successfully", success: true}, {status: 200})
     } else {
-        return NextResponse.json({result: "Employee Not Found"}, {status: 404})
+        return NextResponse.json({result: "Employee Not Found", success: false}, {status: 404})
     }
 }
