@@ -1,4 +1,5 @@
 import DeleteButton from "@/components/DeleteButton";
+import Link from "next/link";
 
 
 const getEmployees = async () => {
@@ -11,12 +12,13 @@ const EmployeeList = async () => {
   const employees = await getEmployees();
   return (
     <>
-      <h2>Employees</h2>
+      <h2>Employee List</h2>
       {
           employees.map((item, i) => (
              <div key={i}>
                 <h3>{item.name}</h3>
                 <DeleteButton id={item.employeeId} />
+                <Link href={`employee-list/${item.employeeId}/update`}>Edit</Link>
              </div>
           ))
       }
