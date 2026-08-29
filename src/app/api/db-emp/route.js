@@ -11,3 +11,17 @@ export const GET = async () => {
     // return NextResponse.json({result: "Success"})
     return NextResponse.json({result: empData});
 }
+
+// POST
+export const POST = async (req) => {
+     const payload = await req.json();
+     await mongoose.connect(connectionString);
+    //  const employeeData = new Employee({
+    //      name:"Alex",
+    //      salary: "50k",
+    //      department:"IT"
+    //  })
+     const employeeData = new Employee(payload);
+     const response = await employeeData.save();
+     return NextResponse.json({result: response});
+}
