@@ -32,3 +32,13 @@ export const GET = async (req, {params}) => {
     const result = await Employee.findById(id)
     return NextResponse.json({result, success: true})
 }
+
+export const DELETE = async (req, {params}) => {
+    const { empId } = await params;
+    const id = { _id:empId };
+    // For Mongo
+    await mongoose.connect(connectionString);
+    // getting result
+    const result = await Employee.deleteOne(id);
+    return NextResponse.json({result,success: true})
+}
