@@ -13,9 +13,10 @@ export const POST = async (request) => {
     const path = `./public/uploads/${file.name}`;
 
     try {
-       await writeFile(path.buffer)
+       await writeFile(path,buffer)
        return NextResponse.json({response: "Successfully Uploaded", success:true})
     } catch (error) {
-        console.log(error)
+        console.log(error);
+        return NextResponse.json({success:false})
     }
 }
