@@ -1,16 +1,17 @@
-import { createSlice, nanoid } = require("@reduxjs/toolkit");
+import { createSlice, nanoid } from "@reduxjs/toolkit";
 
-const startingState = {
+const initialState = {
     employees:[]
 }
 
 const Slice = createSlice({
-     startingState,
+     name:'addEmployeeSlice',
+     initialState,
      reducers:{
         addEmployee:(state, action) => {
              const data = {
                id:nanoid(),
-               name:action.name
+               name:action.payload
              }
              state.employees.push(data)
         }
