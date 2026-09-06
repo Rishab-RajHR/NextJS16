@@ -1,7 +1,7 @@
-import { createAsyncThunk, createSlice, nanoid } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, current, nanoid } from "@reduxjs/toolkit";
 
 const initialState = {
-    employees:[],
+    employees: JSON.parse(localStorage.getItem('emp')),
     isLoading: false,
     error: null,
     employeesAPIData: []
@@ -23,6 +23,9 @@ const Slice = createSlice({
                name:action.payload
              }
              state.employees.push(data)
+             current
+             let empData = JSON.stringify(current(state.employees));
+             localStorage.setItem("emp",empData);
         },
         removeEmployee:(state, action)=> {
            const data = state.employees.filter((item) => {
